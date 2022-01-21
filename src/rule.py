@@ -16,6 +16,9 @@ class Type(enum.Enum):
 class Rule():
 
     def __init__(self):
-        type = Type.Null
+        ruleType = Type.Null
         char = ''
         position = -1
+
+    def check_word(self, word) -> bool:
+        return True

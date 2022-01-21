@@ -42,7 +42,7 @@ def setup():
                 key_stats[char.lower()] += 1
 
     for char in alphabet:
-        #print('{character}: {count}'.format(character=char, count=key_stats[char]))
+        print('{character}: {count}'.format(character=char, count=key_stats[char]))
         pass
 
 if __name__ == '__main__':

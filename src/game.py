@@ -10,10 +10,10 @@ class Game():
 
     def __init__(self):
         self.possible_words = []
-        self.rules: list:Rule = []
+        self.rules = []
 
     def add_rule(self):
         pass
 
-    def check_word(self, word):
+    def update_words(self):
         pass
