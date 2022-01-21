@@ -1,1 +1,2 @@
 termcolor==1.1.0
+nerodia==0.14.1
