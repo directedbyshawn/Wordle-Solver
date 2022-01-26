@@ -9,9 +9,10 @@ from os import system, path, mkdir
 from nerodia.browser import Browser
 from src.db import create_db, load_defaults
 from src.config import DB_PATH, WORDS_PATH, DICTIONARY_PATH
+from src.game import Game
 
-SETUP = True
-SOLVE = False
+SETUP = False
+SOLVE = True
 
 def main():
 
@@ -54,25 +55,17 @@ def setup():
             for char in temp_line:
                 key_stats[char.lower()] += 1
 
-    '''
-    
-        print letter frequency
-
-    for char in alphabet:
-        print('{character}: {count}'.format(character=char, count=key_stats[char]))
-        pass
-
-    '''
-
     # creates database if it does not exist
     if not path.exists(DB_PATH):
         create_db()
         load_defaults(key_stats)
-    load_defaults(key_stats)
 
 def solve():
 
-    pass
+    game = Game()
+    game.print_words()
+
+    
 
 if __name__ == '__main__':
     system('cls')
