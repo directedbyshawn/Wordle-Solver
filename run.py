@@ -5,9 +5,12 @@
 '''
 
 from main import main
-from os import system
+import setup
+from os import system, path
+from src.config import DB_PATH
 
 if __name__ == '__main__':
-    # TODO: do time loop in here that calls main() every day at 12:01 am
     system('cls')
+    if not path.exists(DB_PATH):
+        setup.setup()
     main()
