@@ -6,6 +6,7 @@
 
 from .rule import Rule, Type
 from .word import Word
+from .db import retrieve_words
 
 class Game():
 
@@ -15,8 +16,17 @@ class Game():
         self.__load_words()
 
     def __load_words (self):
+
         ''' Loads words from database'''
-        pass
+        words = retrieve_words()
+
+        for word in words:
+            this_word = Word(word[0], word[1], word[2], word[3])
+            self.possible_words.append(this_word)
+
+    def print_words(self):
+        for word in self.possible_words:
+            print(word)
 
     def add_rule(self):
         pass
