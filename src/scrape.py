@@ -28,8 +28,6 @@ def scrape():
                 word.popularity_rating = convert_num(result_split[1])
                 update_results(word.id, word.popularity_rating)
                 print('Word: {word}'.format(word=word))
-            else:
-                pass
         except:
             cont = False
             while (not cont):
