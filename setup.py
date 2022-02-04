@@ -1,6 +1,6 @@
 '''
 
-    Setup
+    Setup.
 
 '''
 
@@ -45,3 +45,5 @@ def main():
         create_db()
 
     load_defaults(key_stats)
+
+    # TODO: Call webscraper to get popularity ratings

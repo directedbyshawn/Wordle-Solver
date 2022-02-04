@@ -12,6 +12,8 @@ class Game():
 
     def __init__(self):
         self.possible_words: Word = []
+        self.correct_word: str = ''
+        self.duplicates: list = []
         self.rules: Rule = []
         self.__load_words()
 

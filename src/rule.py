@@ -11,7 +11,7 @@ class Type(enum.Enum):
     Not = 1
     Contains = 2
     Position = 3
-
+    Duplicate = 4
 
 class Rule():
 
@@ -19,6 +19,7 @@ class Rule():
         ruleType = Type.Null
         char = ''
         position = -1
+        duplicate = None
 
     def check_word(self, word) -> bool:
         return True
