@@ -19,7 +19,7 @@ class Word():
         self.popularity_rating = popularity
 
     def __repr__(self):
-        return '{id}: {word}, freq={frequency} & pop={popularity}\n'.format(id=self.id, word=self.word, frequency=self.frequency_rating, popularity=self.popularity_rating)
+        return '{id}: {word}, freq={frequency} & pop={popularity}'.format(id=self.id, word=self.word, frequency=self.frequency_rating, popularity=self.popularity_rating)
 
     def increment_popularity(self):
         self.popularity_rating += 1

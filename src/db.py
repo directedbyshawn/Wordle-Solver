@@ -89,7 +89,7 @@ def retrieve_words():
         for row in cursor.execute('SELECT * from words'):
             words.append(row)
     except sqlite3.DatabaseError:
-        print('ERROR: Could not retrieve data')
+        print(colored('ERROR: Could not retrieve data.', 'red'))
     finally:
         try:
             if cursor is not None:
@@ -100,4 +100,24 @@ def retrieve_words():
             print(colored('ERROR: Cant close connection to databse.', 'red'))
 
     return words
+
+def update_results(id, result):
+
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        query = 'UPDATE words SET popularity = {results} WHERE id = {id}'.format(results=result, id=id)
+        cursor.execute(query)
+        conn.commit()
+    except sqlite3.DatabaseError:
+        print(colored('ERROR: Could not retrieve data.', 'red'))
+    finally:
+        try:
+            if cursor is not None:
+                cursor.close()
+            if conn is not None:
+                conn.close()
+        except Exception:
+            print(colored('ERROR: Cant close connection to databse.', 'red'))
+    
     
