@@ -1,6 +1,6 @@
 '''
 
-    Web scraper to get word probability
+    Web scraper to get word probability.
 
 '''
 
@@ -20,31 +20,25 @@ def scrape():
     game = Game()
 
     for word in game.possible_words:
-        sleep(0.2)
         try:
             if (word.popularity_rating == 0):
                 url = get_url(word.word)
                 driver.get(url)
+                sleep(1)
                 result_string = driver.find_element_by_id('result-stats').text
                 result_split = result_string.split()
                 word.popularity_rating = convert_num(result_split[1])
                 update_results(word.id, word.popularity_rating)
                 print('Word: {word}'.format(word=word))
         except Exception:
-            cont = False
-            while (not cont):
-                score = input()
-                if (score == '' or ' ' or '\n'):
-                    cont = True
-                else:
-                    try:
-                        int_score = int(score)
-                        assert score >= 0
-                        update_results(word.id, int_score)
-                        print('Word: {word}'.format(word=word))
-                        cont = True
-                    except Exception:
-                        cont = True
+            score = input('Enter score manually or press enter to continue: ')
+            if (score != '' and score != ' ' and score != '\n'):
+                try:
+                    word.popularity_rating = int(score)
+                    update_results(word.id, word.popularity_rating)
+                    print('Word: {word}'.format(word=word))
+                except Exception:
+                    print('Error with manual entry')
 
     
 
