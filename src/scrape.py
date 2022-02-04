@@ -7,6 +7,7 @@
 from selenium import webdriver
 from .db import retrieve_words, update_results
 from .game import Game
+from time import sleep
 
 def scrape():
 
@@ -19,6 +20,7 @@ def scrape():
     game = Game()
 
     for word in game.possible_words:
+        sleep(0.2)
         try:
             if (word.popularity_rating == 0):
                 url = get_url(word.word)
@@ -28,11 +30,21 @@ def scrape():
                 word.popularity_rating = convert_num(result_split[1])
                 update_results(word.id, word.popularity_rating)
                 print('Word: {word}'.format(word=word))
-        except:
+        except Exception:
             cont = False
             while (not cont):
-                input()
-                cont = True
+                score = input()
+                if (score == '' or ' ' or '\n'):
+                    cont = True
+                else:
+                    try:
+                        int_score = int(score)
+                        assert score >= 0
+                        update_results(word.id, int_score)
+                        print('Word: {word}'.format(word=word))
+                        cont = True
+                    except Exception:
+                        cont = True
 
     
 
