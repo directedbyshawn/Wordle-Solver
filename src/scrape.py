@@ -25,7 +25,7 @@ def scrape():
             if (word.popularity_rating == 0):
                 url = get_url(word.word)
                 driver.get(url)
-                sleep(1)
+                sleep(1.3)
                 result_string = driver.find_element_by_id('result-stats').text
                 result_split = result_string.split()
                 word.popularity_rating = convert_num(result_split[1])
