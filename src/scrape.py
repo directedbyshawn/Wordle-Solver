@@ -8,6 +8,7 @@ from selenium import webdriver
 from .db import retrieve_words, update_results
 from .game import Game
 from time import sleep
+from os import system
 
 def scrape():
 
@@ -39,6 +40,9 @@ def scrape():
                     print('Word: {word}'.format(word=word))
                 except Exception:
                     print('Error with manual entry')
+
+    system('cls')
+    print('Finished search for all words.')
 
     
 
